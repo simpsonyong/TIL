@@ -10,3 +10,8 @@ urls = [
 
 for url in urls:
     webbrowser.open(url)
+
+import requests
+
+for i in range(1, 30):
+    url = http://edu.ssafy.com/edu/board/mentoring/list.do?brdItmSeq={ㅑ}&_csrf=f84fcb10-adf4-4f5b-9f05-b90762f4a23e&pageIndex=1
