@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- 문서가 주로 어떤 언어로 적히는지-->
+        <meta charset="UTF-8">
+        <title>Box office</title>
+    <head>
+        <body> 
+            <h1>box office</h1>
+            <ol>
+                {% for movie in movies %} <!-- % % : 퍼센트 프린트 비슷한거임 {}: 뭔가하겠다는 중괄호 -->
+                <li>{{ movie }}</li>
+                {% endfor %}
+            </ol>
+        </body>
+    </head>
+</html>

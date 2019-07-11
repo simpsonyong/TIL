@@ -773,3 +773,26 @@ api는 유료일 수도 있다.
 api가 가장 쉽고 정보를 받아 사용하기 쉽지만
 
 소수의 기업만 pip install 쉽게 주진 않는다. 네이버도 없음 
+
+
+
+```
+from iexfinance.stocks import Stock
+
+import random
+
+
+companies = ['AAPL','GOOGL','TSLA','FB','AMZN']
+
+company = Stock(random.choice(companies), token='pk_34947d6f20564c52a9dcd62bf4d4ab5f')
+
+
+print(company.get_quote())
+
+output
+
+{'symbol': 'AAPL', 'companyName': 'Apple, Inc.', 'calculationPrice': 'close', 'open': 199.05, 'openTime': 1562679000265, 'close': 201.24, 'closeTime': 1562702400457, 'high': 201.51, 'low': 198.81, 'latestPrice': 201.24, 'latestSource': 'Close', 'latestTime': 'July 9, 2019', 'latestUpdate': 1562702400457, 'latestVolume': 20365465, 'iexRealtimePrice': 201.28, 'iexRealtimeSize': 100, 'iexLastUpdated': 1562702398891, 'delayedPrice': 201.24, 'delayedPriceTime': 1562702400457, 'extendedPrice': 200.9, 'extendedChange': -0.34, 'extendedChangePercent': -0.00169, 'extendedPriceTime': 1562715897466, 'previousClose': 200.02, 'change': 1.22, 'changePercent': 0.0061, 'iexMarketPercent': 0.019760265724352476, 'iexVolume': 402427, 'avgTotalVolume': 24728097, 'iexBidPrice': 0, 'iexBidSize': 0, 'iexAskPrice': 0, 'iexAskSize': 0, 'marketCap': 925921339200, 'peRatio': 16.78, 'week52High': 233.47, 'week52Low': 142, 'ytdChange': 0.272691, 'lastTradeTime': 1562702400457}
+
+토큰을 기업에서 주면 정보를 찾기 쉽다
+```
+
