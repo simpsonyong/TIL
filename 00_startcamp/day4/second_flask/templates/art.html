@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Make art</title>
+</head>
+<body>
+    <h1>Put some text</h1>
+    <form action="/result">
+        <input name="input_text" type="text">
+<!-- 셀렉트로 구성한 이유 (셀렉트 통해서 옵션을 선택하여 폰트를 표현할 수 있기 때문에)-->
+        <select name="font">
+            <!-- 밸류값이 꼭 필요합니다. -->
+            <option value="random">랜덤</option>
+            <option value="block">블록</option>
+            <option value="white_bubble">동그라미</option>
+        </select>
+        <input type="submit">
+    </form>
+</body>
+</html>

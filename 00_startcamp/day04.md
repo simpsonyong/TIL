@@ -130,3 +130,554 @@ if __name__=="__main__":
 </html>
 ```
 
+
+
+# html 무비 박스오피스 순위
+
+```
+html
+
+<!DOCTYPE html>
+
+<html lang="en"> <!-- 문서가 주로 어떤 언어로 적히는지-->
+
+        <meta charset="UTF-8">
+
+​        <title>Box office</title>
+
+​    <head>
+
+​        <body> 
+
+​            <h1>box office</h1>
+
+​            <ol>
+
+​                {% for movie in movies %} 
+<!-- % % : 퍼센트 프린트 비슷한거임 {}: 뭔가하겠다는 중괄호 -->
+
+​                <li>{{ movie }}</li> 
+
+​                {% endfor %}
+
+​            </ol>
+
+​        </body>
+
+​    </head>
+
+</html>
+```
+
+```
+python
+
+@app.route('/boxoffice')#박스오피스라는 html이라는 것을 만들거고 일단 templates 만들자
+
+def boxoffice():
+
+​    top_5 = [
+
+​        '스파이더맨 파 프롬 홈',
+
+​        '알라딘',
+
+​        '토이스토리4',
+
+​        '존윅3',
+
+​        '라이온킹',
+
+​    ]
+
+
+
+​    return render_template('boxoffice.html', movies=top_5)
+```
+
+![1562811789751](C:\Users\student\AppData\Roaming\Typora\typora-user-images\1562811789751.png)
+
+
+
+![1562811845180](C:\Users\student\AppData\Roaming\Typora\typora-user-images\1562811845180.png)
+
+탭하면
+
+![1562811872670](C:\Users\student\AppData\Roaming\Typora\typora-user-images\1562811872670.png)
+
+href="#" 현재는 어디일지 모르지만 나중에 채울게요라는 의미
+
+
+
+
+
+http://www.kobis.or.kr/kobisopenapi/homepg/apiservice/searchServiceInfo.do
+
+명량 천7백만 = 100UBD 
+
+엄복동UBD=17만
+
+아스달연대기(ASD) = 540억(투자비) => 폭망
+
+프로그램 json viewer
+
+![1562818613468](C:\Users\student\AppData\Roaming\Typora\typora-user-images\1562818613468.png)
+
+![1562818771387](C:\Users\student\AppData\Roaming\Typora\typora-user-images\1562818771387.png)
+
+Host: 127.0.0.1:5000
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Referer: http://127.0.0.1:5000/send?
+Accept-Encoding: gzip, deflate, br
+Accept-Language: ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7
+
+
+
+html
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+        <meta charset="UTF-8">
+
+​        <title>Send message</title>
+
+​    <head>
+
+​        <body> 
+
+​            <h1>Send message here</h1>
+
+​            <form action="/receive">
+
+​                <!-- action: 양식을 보낼 곳(신호를 받는 곳) 주소를 입력한다 -->
+
+​                <input type="text">
+
+​                <input type="submit">
+
+​                <!-- input 에 들어가는 메세지를 app.py에서 처리해서 값을 출력해야함 -->
+
+​                <!-- <input type="text" value="hi" placeholder="message here" autofocus>
+
+​                <input type="submit" value="보내기"> -->
+
+​                <!-- <input type="email">  이메일 형식(@마크 없으면 문제가 생김)_-->
+
+​                <!-- 타입도 중요하다 예): 이메일 형식은 @가 없어서 1차적으로 잘못되면 바로 막아줌 -->
+
+​                <!-- 기본적으로 텍스트형식파일로 email submit color date text -->
+
+​                <input>
+
+​            </form>
+
+​        </body>
+
+​    </head>
+
+</html>
+
+
+
+app.py
+
+from flask import Flask, render_template, request
+
+@app.route('/send')
+
+def send():
+
+​    print(request.headers)
+
+​    \# requests(또 다른외장함수 기능)와 request(라우트를 통해 receive로 받은 신호가 담겨진 박스/외장함수 import 해야함) 주의할것
+
+​    return render_template('send.html')
+
+
+
+키벨류 없이 값만 나오면 오류 밸류를 넣어줘
+
+ImmutableMultiDict([])
+127.0.0.1 - - [11/Jul/2019 13:34:13] "GET /receive HTTP/1.1" 200 -
+
+
+
+​            <form action="/receive">
+
+​                <!-- action: 양식을 보낼 곳(신호를 받는 곳) 주소를 입력한다 / 이름도 정의해야함 -->
+
+​                <input type="text">
+
+​                <input type="submit">
+
+
+
+라우트 send에서 신호 받음 
+
+http://127.0.0.1:5000/send
+
+
+
+
+
+# HTML  입력 신호 전달 방식
+
+1.  app.py에서 출력신호를 통해 app.route('/send')를 통해 send.html로 전달
+2.  send. html에서 name이 msg로 설정된 신호를 app.py로 발송
+3.  받은 신호를 app.py에서 app.route receive를 통해 처리해서 data 변수값을 이용하여 receive.html로 발송
+4. receive.html에서 받은 신호를 처리
+
+### receive.html
+
+```
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <meta charset="UTF-8">
+
+​    <title>수신함</title>
+
+<head>
+
+​    <body>
+
+​      <h1>{{data}}</h1>
+
+​    </body>
+
+</head>
+
+</html>
+```
+
+### send.html
+
+```
+<!DOCTYPE html>
+
+<html lang="en">
+
+        <meta charset="UTF-8">
+
+​        <title>Send message</title>
+
+​    <head>
+
+​        <body> 
+
+​            <h1>Send message here</h1>
+
+​            <form action="/receive">
+
+​                <!-- action: 양식을 보낼 곳(신호를 받는 곳) 주소를 입력한다 -->
+
+​                <input type="text" name="msg">
+
+​                <input type="submit" value="보내기">
+
+​                <!-- input 에 들어가는 메세지를 app.py에서 처리해서 값을 출력해야함 -->
+
+​                <!-- <input type="text" value="hi" placeholder="message here" autofocus>
+
+​                <input type="submit" value="보내기"> -->
+
+​                <!-- <input type="email">  이메일 형식(@마크 없으면 문제가 생김)_-->
+
+​                <!-- 타입도 중요하다 예): 이메일 형식은 @가 없어서 1차적으로 잘못되면 바로 막아줌 -->
+
+​                <!-- 기본적으로 텍스트형식파일로 email submit color date text -->
+
+​            </form>
+
+​        </body>
+
+​    </head>
+
+</html>
+```
+
+### app.py
+
+```
+from flask import Flask, render_template, request
+
+\#html로 끌기 위해서 render템플릿 꺼내고 flask를 쓰기 
+
+\# 위해서 그다음 폴더 밑에 templates 폴더 만들기 
+
+\# 그냥 flask가 이렇게 작동하니 그냥 알아만 둘것
+
+import datetime
+
+
+
+app = Flask(__name__)
+
+
+
+
+
+def index():
+
+​    return render_template('index.html')
+
+
+
+
+
+def send():
+
+​    return render_template('send.html')
+
+
+
+
+
+def receive():
+
+​    data = request.args.get('msg')
+
+​    \# data = request.args.get('msg') 아까 data 변수를 설정하지 않아서 오류가 뜸
+
+​    \# request.args.get('msg') msg라는 name을 가진 데이터를 꺼낸다
+
+​    \# requests(또 다른외장함수 기능)와 request(라우트를 통해 receive로 받은 신호가 담겨진 박스/외장함수 import 해야함) 주의할것
+
+​    return render_template('receive.html', data=data)
+
+
+
+@app.route('/dday')#라우트는 길을 뚫어준다는 의미
+
+def dday():
+
+​    today = datetime.datetime.now()
+
+​    end_date = datetime.datetime(2019, 11, 29)
+
+​    left = end_date - today
+
+​    \# return f'SSAFY 2기 1학기 종료일까지 {left.days} 일 남았습니다.'
+
+​    return render_template('dday.html', left_days=left.days)
+
+
+
+
+
+def boxoffice():
+
+​    top_5 = [
+
+​        '스파이더맨 파 프롬 홈',
+
+​        '알라딘',
+
+​        '토이스토리4',
+
+​        '존윅3',
+
+​        '라이온킹',
+
+​    ]
+
+
+
+​    return render_template('boxoffice.html', movies=top_5)
+
+
+
+if __name__=="__main__":
+
+​    app.run(debug=True)
+```
+
+p.code*10탭+
+
+![1562821352686](C:\Users\student\AppData\Roaming\Typora\typora-user-images\1562821352686.png)
+
+# id의 역할 & 기타
+
+```
+            <!-- <p class="code"></p> -->
+
+​            <!-- <p class="code" id="secret">ssafy3</p> -->
+
+​            <!-- 클래스가 코드인것을 id가 시크릿인 애를 잡아줘하면 위의 라인을 금방찾을 수 있다.
+
+​            d는 찾기 쉽게 도와주는 역할
+
+​            p{ => 모든 p 태그는
+
+​                color: red => 빨간색이 되어라
+
+​            }
+
+​            .code{ => 클래스가 코드인 모든 것은 전부/모든 p보다 상세
+
+​                color: blue;
+
+​            }
+
+​            \#secret { => 더 정확히 누군가를 지칭하므로 
+
+
+
+​                color: yellow;
+
+​            }
+
+​            
+
+​            body > p:nth-child(3) -> 아이딕가없으면 바디 안에 p인자 중 3번째 이런식으로
+
+​            \#secret -> 아이디가 있으면 f12눌러서 selecter 찾으면 이렇게 표시됨
+
+​             -->
+```
+
+1. 네이버 크롤링  환율정보 받아서 
+
+2. 네이버 크롤링 하지말고 
+
+환율정보 패키지 api
+
+```
+company_name = stock['companyName'] => 아래에서 companyName 키벨류값 가져온다
+
+{'symbol': 'GOOGL', 'companyName': 'Alphabet, Inc.', 'calculationPrice': 'close', 'open': 1132.32, 'openTime': 
+```
+
+Consolas : 개발쪽에서 자주쓰는폰트
+
+
+
+From 나 to BOT => 텔레그램 챗봇(요청)
+
+
+
+url에 실려서 요청이 날라간다
+
+hi bye 가 url 로 날라간다
+
+/receive?hi?bye 이런식으로
+
+
+
+구글까지 요청가는데 많은 DNS서버를거친다
+
+```
+                <!-- action: 양식을 보낼 곳(신호를 받는 곳) 주소를 입력한다 -->
+
+<!-- input 에 들어가는 메세지를 app.py에서 처리해서 값을 출력해야함 -->
+
+​                <!-- <input type="text" value="hi" placeholder="message here" autofocus>
+
+​                <input type="submit" value="보내기"> -->
+
+​                <!-- <input type="email">  이메일 형식(@마크 없으면 문제가 생김)_-->
+
+​                <!-- 타입도 중요하다 예): 이메일 형식은 @가 없어서 1차적으로 잘못되면 바로 막아줌 -->
+
+​                <!-- 기본적으로 텍스트형식파일로 email submit color date text -->
+
+
+
+<!-- 
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+        <meta charset="UTF-8">
+
+​        <title>Send message</title>
+
+​    <head>
+
+​        <body> 
+
+​            <h1>나스닥 종목 환율계산기 </h1>
+
+​            <form action="/receive">
+
+
+
+​                <input type="text" name="msg" placeholder="AAPL, GOOGL, TSLA, ...">
+
+​                <input type="submit" value="보내기">
+
+​            </form>
+
+​        </body>
+
+​    </head>
+
+</html> -->
+
+
+
+​                <!-- method="GET"가 기본설정임 url 거리낄거 없는 요청임 그냥 줘 라는 의미
+
+​                하지만 post가 되면 받는 사람도 requests.args -> requests.form로 바꾸면서 
+
+​                안전하게 처리함 -->
+
+​                
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+        <meta charset="UTF-8">
+
+​        <title>Send message</title>
+
+​    <head>
+
+​        <body> 
+
+​            <h1>나스닥 종목 환율계산기 </h1>
+
+​            <form action="/receive" method="POST">
+
+​                <input type="text" name="msg" placeholder="AAPL, GOOGL, TSLA, ...">
+
+​                <input type="submit" value="보내기">
+
+​            </form>
+
+​        </body>
+
+​    </head>
+
+</html>
+```
+
+```
+# @app.route('/receive', methods=['POST']) => 취급주의
+
+\# data = request.form.get('msg')= args=>폼으로 바뀜 
+
+\# form 형식( 사용자가 입력한 값이 url에 안적혀있음)
+
+
+
+@app.route('/receive', methods=['POST'])
+```
+
+인터넷 세상: 요청/응답 2가지
+
+- 요청 종류 2가지
+
+  - GET 내놔:  95퍼 우리의 활동 웹페이지 영상 등등
+  - POST 받아: 우리가 글쓰는 활동 등을 할떄
+
+  

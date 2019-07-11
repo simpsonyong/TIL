@@ -1,0 +1,43 @@
+                <!-- action: 양식을 보낼 곳(신호를 받는 곳) 주소를 입력한다 -->
+<!-- input 에 들어가는 메세지를 app.py에서 처리해서 값을 출력해야함 -->
+                <!-- <input type="text" value="hi" placeholder="message here" autofocus>
+                <input type="submit" value="보내기"> -->
+                <!-- <input type="email">  이메일 형식(@마크 없으면 문제가 생김)_-->
+                <!-- 타입도 중요하다 예): 이메일 형식은 @가 없어서 1차적으로 잘못되면 바로 막아줌 -->
+                <!-- 기본적으로 텍스트형식파일로 email submit color date text -->
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+        <meta charset="UTF-8">
+        <title>Send message</title>
+    <head>
+        <body> 
+            <h1>나스닥 종목 환율계산기 </h1>
+            <form action="/receive">
+
+                <input type="text" name="msg" placeholder="AAPL, GOOGL, TSLA, ...">
+                <input type="submit" value="보내기">
+            </form>
+        </body>
+    </head>
+</html> -->
+
+                <!-- method="GET"가 기본설정임 url 거리낄거 없는 요청임 그냥 줘 라는 의미
+                하지만 post가 되면 받는 사람도 requests.args -> requests.form로 바꾸면서 
+                안전하게 처리함 -->
+                
+<!DOCTYPE html>
+<html lang="en">
+        <meta charset="UTF-8">
+        <title>Send message</title>
+    <head>
+        <body> 
+            <h1>나스닥 종목 환율계산기 </h1>
+            <form action="/receive" method="POST">
+                <input type="text" name="msg" placeholder="AAPL, GOOGL, TSLA, ...">
+                <input type="submit" value="보내기">
+            </form>
+        </body>
+    </head>
+</html>
