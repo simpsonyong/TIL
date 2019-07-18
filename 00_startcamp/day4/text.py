@@ -1,11 +1,12 @@
 import requests
 import json
+
 url = 'http://api.manana.kr/exchange/rate/KRW/JPY,USD,KRW.json'
 response = requests.get(url).text
-
 response = json.loads(response)
+
 print(response[2]['rate'])
-# 내가 한 것 json 제외하고 함
+# 내가 한 방법 json 제외 + 노가다 + 정수값 퍼와서 나누기 100 작업
 # KR_data = int(''.join(response[-9:-5]+response[-4:-2]))/100 => 1172.55로 가져온다
 # 개선법1: float함수를 이용하면 그냥 해결할 수 있다. 몰랐음;;
 # 개선법2: json 외장함수를 이용하여 딕셔너리에서 값을 가져온다
