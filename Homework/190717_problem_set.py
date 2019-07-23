@@ -83,14 +83,14 @@
 # 과일은 몇개?
 # 아래 코드에서 과일과 아닌 것을 구분하기
 
-basket = {'apple': 4, 'orange': 3, 'computer': 28, 'tv': 2, 'banana': 5, 'tomato': 9}
-fruits = ['apple', 'orange', 'banana', 'pear', 'tomato']
+# basket = {'apple': 4, 'orange': 3, 'computer': 28, 'tv': 2, 'banana': 5, 'tomato': 9}
+# fruits = ['apple', 'orange', 'banana', 'pear', 'tomato']
 
-# 과일은 21개, 아닌 것은 30개
-total = [0, 0]
-for k, v in basket.items():
-    if k in fruits:
-        total[0] += v
-    if k not in fruits:
-        total[1] += v
-print('과일은 {}개, 아닌 것은 {}개'.format(total[0], total[1]))
+# # 과일은 21개, 아닌 것은 30개
+# total = [0, 0]
+# for k, v in basket.items():
+#     if k in fruits:
+#         total[0] += v
+#     else:
+#         total[1] += v
+# print('과일은 {}개, 아닌 것은 {}개'.format(total[0], total[1]))
