@@ -1,4 +1,4 @@
-## 네이버 영화 검색 API - movie_naver.py
+## 1. 네이버 영화 검색 API - movie_naver.py
 
 ### 사용 파일 
 
@@ -69,7 +69,9 @@
 
 - movie_naver.csv
 
-## 영화 포스터 이미지 저장 - movie_image.py
+  
+
+## 2. 영화 포스터 이미지 저장 - movie_image.py
 
 ### 사용파일
 
@@ -97,3 +99,9 @@ for url in movie_url_list:
     # movie_naver.moviecd_list의 값을 moviecd라는 변수로 저장
     open(f'./images/{moviecd}.jpg', 'wb').write(image)  # 이미지를 wb옵션으로 저장함
 ```
+
+### 결과 파일 
+
+- ./images/jpg파일들
+
+  

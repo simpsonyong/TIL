@@ -1,40 +1,34 @@
 import requests
-import time
-from datetime import datetime, timedelta
-from decouple import config
 import csv
-import json
+from decouple import config
 
-with open('movie.csv', 'w', encoding='utf-8', newline='') as f:
-    fieldnames = ['movieCd', 'movieNm', "movieNmEn", "movieNmOg", 'openDt', 'watchGradeNm', 'showTm', 'openDt', 'movie_data', 'directors']
+with open('movie.csv', 'w', encoding='utf-8', newline='') as f:  # movie.csv 작성
+    fieldnames = ['movieCd', 'movieNm', "movieNmEn", "movieNmOg", 'watchGradeNm', 'showTm', 'prdtYear', 'genres', 'directors']
+    # 영화 대표코드 , 영화명(국문) , 영화명(영문) , 영화명(원문) , 관람등급 , 개봉연도 , 상영시간 , 장르 , 감독명
     writer = csv.DictWriter(f, fieldnames=fieldnames)
     writer.writeheader()
-
     API_KEY = config('API_KEY')
     movie_codes = []
 
-    with open('boxoffice.csv', 'r', encoding='utf-8') as f:
-        reader = csv.DictReader(f)
-        movie_codes = []
-        for row in reader:
-            movie_codes.append(row['movieCd'])
+    with open('boxoffice.csv', 'r', encoding='utf-8') as f:  # boxoffice.csv를 불러옴
+        for row in csv.DictReader(f):
+            movie_codes.append(row['movieCd'])  # movieCd열을 movie_codes의 리스트에 저장
 
     for movie_code in movie_codes:
         URL = f'http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key={API_KEY}&movieCd={movie_code}'
-        movie_data = requests.get(URL).json()
+        source = requests.get(URL).json()["movieInfoResult"]['movieInfo']
         result = {}  # CSV로 저장할 최종 딕셔너리 자료
-        result['movieCd'] = movie_data["movieInfoResult"]['movieInfo']['movieCd']  # 대표코드
-        result['movieNm'] = movie_data['movieInfoResult']['movieInfo']['movieNm']  # 영화명(국문)
-        result['movieNmEn'] = movie_data['movieInfoResult']['movieInfo']['movieNmEn']  # 영화명(영문)
-        if movie_data['movieInfoResult']['movieInfo']['movieNmOg']:
-            result['movieNmOg'] = movie_data['movieInfoResult']['movieInfo']['movieNmOg']  # 영화명(원문)
-        result['openDt'] = movie_data['movieInfoResult']['movieInfo']['openDt']  # 개봉일자
-        if movie_data['movieInfoResult']['movieInfo']['audits']:  # 관람등급
-            result['watchGradeNm'] = movie_data['movieInfoResult']['movieInfo']['audits'][0]['watchGradeNm']
-        result['showTm'] = movie_data['movieInfoResult']['movieInfo']['showTm']  # 상영시간
-        result['openDt'] = movie_data['movieInfoResult']['movieInfo']['openDt']  # 개봉연도
-        if movie_data['movieInfoResult']['movieInfo']['genres']:  # 장르
-            result['movie_data'] = movie_data['movieInfoResult']['movieInfo']['genres'][0]['genreNm']
-        if movie_data['movieInfoResult']['movieInfo']['directors']:  # 감독명
-            result['directors'] = movie_data['movieInfoResult']['movieInfo']['directors'][0]['peopleNm']
+        result['movieCd'] = source['movieCd']  # 대표코드
+        result['movieNm'] = source['movieNm']  # 영화명(국문)
+        result['movieNmEn'] = source['movieNmEn']  # 영화명(영문)
+        if source['movieNmOg']:
+            result['movieNmOg'] = source['movieNmOg']  # 영화명(원문)
+        if source['audits']:  # 관람등급
+            result['watchGradeNm'] = source['audits'][0]['watchGradeNm']
+        result['showTm'] = source['showTm']  # 상영시간
+        result['prdtYear'] = source['prdtYear']  # 개봉연도
+        if source['genres']:  # 장르
+            result['genres'] = source['genres'][0]['genreNm']
+        if source['directors']:  # 감독명
+            result['directors'] = source['directors'][0]['peopleNm']
         writer.writerow(result)
