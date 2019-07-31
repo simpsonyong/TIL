@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>selector 1</title>
+    <style>
+
+        h1, p, a{
+            color: red;
+        }
+        .pp {
+            color: orange;
+        }
+        a[href] {
+            color: green;
+        }
+        a[target = "_blank"]{
+            color: black;
+        }
+        /* 중복해서 선택 가능 */
+
+        h2[title~="greeting"]
+        {
+            color: blueviolet
+        }
+        /* div p => div안에 있는 모든 p */
+        div p{
+            color:chocolate;
+        }
+        div > p{/* 정확히 div 의 p중 자식 요소*/
+            color : cyan;
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <p>나는 div 자식</p>
+        <section>
+            <p>
+                나는 누구인가
+            </p>
+        </section>
+    </div>
+    <div>
+        <p>I'm in div</p>
+    </div>
+    <p>not me</p>
+    <h1>Hello</h1>
+    <p>Happy Hacking</p>
+    <p class = "pp">SSAFY 2nd</p>
+    <a href="#">a</a>
+    <a href="#" target = "_top">b</a>
+    <a href="#" target = "_blank">c</a>
+    <a>d</a>
+
+    <h2 title ="p greeting">hi </h2>
+    <h2 title ="p-goodbye">bye</h2>
+    <h2 title ="hello greeting">Wow</h2>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   
+    <title>Form_Practice</title>
+</head>
+<body>
+    <div>
+        <h1>Form</h1>
+    </div>
+    주문서를 작성하여 주십시오
+    <form action="#">
+        <div>
+            <input type="text" placeholder="이름">
+            <input type="password">
+        </div>
+        <hr>
+        <div>
+            <h2>샌드위치 선택</h2>
+            <input type="radio" value="egg_mayo" name ="lang">에그마요<br>
+            <input type="radio" value="italian BLT" name ="lang">이탈리안 비엘티<br>
+            <input type="radio" value="Turkey" name ="lang">터키 베이컨<br>
+        </div>
+        <hr>
+        <div>
+            <h2>사이즈 선택</h2>
+            <select name="menu">
+            <option value="a" selected>15cm</option>
+            <option value="b">30cm</option>
+            </select>
+        </div>
+        <div>
+            <h2>빵</h2>
+            <input type="radio" value="python" name ="lang"checked>기본<br>
+            <input type="radio" value="python" name ="lang">식빵<br>
+            <input type="radio" value="python" name ="lang">호밀<br>
+            <input type="radio" value="python" name ="lang" disabled>플랫 브레드 : 매진 되었습니다.<br>
+        </div>
+        <div>
+            <h2>야채/소스</h2>
+            <input type="checkbox" name ="option" value="over_study">양상추
+            <input type="checkbox" name ="option" value="additional">피클
+            <input type="checkbox" name ="option" value="weekend">오이
+            <input type="checkbox" name ="option" value="over_study">올리브
+            <input type="checkbox" name ="option" value="additional">할라피뇨
+            <input type="checkbox" name ="option" value="weekend">바베큐소스
+        </div>
+        <input type="submit" name ="주문하기">
+    </form>
+</body>
+</html>

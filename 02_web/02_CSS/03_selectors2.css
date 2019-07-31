@@ -1,0 +1,57 @@
+article:first-of-type{
+    background-color: red;
+}
+article:nth-child(2){
+    background-color: green;
+}
+article:nth-last-of-type(2){
+    background-color: blue;
+}
+article:last-child{
+    background-color: black;
+}
+/* p 요소중에 첫번째 자식을 선택 */
+/* p 중  첫번째가 아니라 첫째 중 p==> 첫째인 p */
+p:first-child{
+    color: gold;
+}
+
+/* p요소중에 마지막 자식을 선택 */
+p:last-child{
+    color: violet;
+}
+
+p:nth-child(4){
+    color: white;
+}
+/* body에 있는 네번째로 나오는 p */
+/* nth -4 가 p기에 이런식으로 해석해야함 body안에 4째가 아니라 어느곳에서든 
+넷째들을 전부 포함 */
+
+/* pseudo class selector */
+/* 상태에 따라 클래스를 바꾼다. */
+/* selector: 가상-클래스 */
+
+a {
+    text-decoration: none;
+    color: black;
+    
+}
+/* 방문하지 않은 링크 */
+a:link{
+    color:red;
+}
+
+a:hover{
+    color: orange;
+}
+
+/* 방문한 링크 */
+a:visited{
+    color:green;
+}
+
+input:focus{
+    background: black;
+    color:white;
+}
