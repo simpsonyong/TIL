@@ -1,0 +1,23 @@
+.visible {
+    visibility: visible;/*visible: 기본값*/
+    /* 혹시 부모가 안보이는 속성일 수 도 있으므로 */
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.display-none {
+    /* Display 속성이지만, 비교해보자. */
+    display: none;
+}
+
+/* Table 관련 CSS */
+table, td{
+    border: 1px solid black;
+}
+
+    /* collapse는 table에서만 사용합니다 */
+.collapse {
+    visibility: None;
+}

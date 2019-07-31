@@ -1,0 +1,21 @@
+div.rounded {
+    border-radius: 30px;
+    border: 1px solid blue;
+    width: 200px;
+    height: 200px;
+}
+div.a {
+    background-color: lightgray;
+    width: 300px;
+    /* width는 콘텐트 범위를 지정 */
+    height: 200px;
+    padding: 25px;
+    border: 10px double navy;
+    /* border는 욕심쟁이여서 margin 좌우를 
+    무시하고 양옆을 다 먹는다 */
+    /* 크기 옵션 후 double&solid 옵션 있다 */
+    margin:  15px;
+    overflow: hidden;
+    /* overflow 가 박스에서 넘쳐흐른 
+    콘텐트를 잘라버린다 */
+}

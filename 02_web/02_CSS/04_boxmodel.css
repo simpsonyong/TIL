@@ -1,0 +1,27 @@
+div {
+    border: solid 1px black;
+    padding: 10px 1px 10px 10px;
+    margin: 10px; /* 상하좌우 전부 10px */
+    /* 내옆에 어디까지 오지마 margin */
+    /* border 사이간 거리 = margin*/
+    /* padding : border 내부 거리 */
+}
+
+div.a {
+    border: dashed 3px red;
+    border-style: dotted;
+    border-width: 2px;
+    border-color: red;
+    padding: 20px;
+    /* 상하 좌우 */
+    margin: 50px 30px;
+    /* 상하 50px 좌우 30px 마진 */
+}
+
+div.like-p {
+    margin: 1rem 0;
+}
+
+.like-p {
+    margin: 1rem 0;
+}

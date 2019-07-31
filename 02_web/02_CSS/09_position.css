@@ -1,0 +1,85 @@
+/* 
+    position의 default
+    위 => 아래, 왼 => 오
+    부모요소 <=> 자식요소: 부모의 위치가 기준점
+    좌표값을 입력해도 반영이 안됨
+*/
+
+.parent {
+    width: 150px;
+    height: 150px;
+    background-color: khaki;
+    border: 1px solid  orchid;
+    margin-top: 30px;
+    margin-left: 30px;
+}
+
+.static-box {
+    position: static;
+    background: skyblue;
+    color: salmon;
+    /* color: 안에있는 텍스트 색깔 */
+    /* background: 바탕색 */
+    text-align: center;
+    /* 가운데 정렬 */
+    height: 150px;
+}
+
+.relative-box {
+    position: relative;
+    top: 50px; left: 50px;
+    background: darkseagreen;
+    text-align: center;
+    height: 150px;
+    /* width height는 상속이 안된다
+    그값을 가져온게 아니라
+    부모의 크기에 자식의 크기가 제한되어 
+    값들을 안줘도 크기가 동일하게 보인다 */
+}
+
+.rel {
+    position: relative;
+}
+
+.absolute-box {
+    position: absolute;
+    height: 200px; width: 200px;
+    top: 50px; left: 50px;
+    background-color: royalblue;
+    text-align: center;
+}
+
+/* 부모가 static이면, body 기준으로 움직임 */
+/* 부모가 relative면, 부모 기준으로 움직임 */
+/* absolute 쓰면 망하는 지름길 중 하나 권장하지 않음 */
+/* 부모가 relative가 아니면 위로 이동한다. */
+
+.fixed-box {
+    position: fixed;
+    color: black;
+    text-align: center;
+    background: slateblue;
+}
+
+.sidebar {
+    top: 0;
+    right: 0;
+    width: 15vw;
+    height: 100vh;
+    /* 화면 전체 비유 */
+    /* width: 200px; */
+    /* padding: 50% 10px; */
+    z-index: 1;
+    /* 기본 z-index는 0, 숫자 높을수록 앞에 */
+}
+
+.footer {
+    bottom: 0;
+    /* width: 100%; */
+    width: 100vw;
+    height: 10vh;
+    background-color: violet;
+    /* height: 50px; */
+    padding: 5%;
+}
+/* footer: 스크롤을 움직여도 항상 아래에 존재 */

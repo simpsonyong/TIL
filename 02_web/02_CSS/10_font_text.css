@@ -1,0 +1,44 @@
+.size-40 {font-size: 40px;}
+.size-2x {font-size: 2em;}
+.size-150p {font-size: 150%;}
+.size-large {font-size: xx-large;}
+/* large 기능을 잘 안씀 */
+
+.serif {font-family: "Times New Roman", Times, serif;}
+/* 폰트 우선순위 지정, 경우의 수는 3가지. 가장 뒤에는 있을 수 밖에 없는 폰트로 지정 */
+.sans-serif {font-family: Arial, Helvetica, sans-serif;}
+.monospace {font-family: consolas, Courier, monospace;}
+/* serif 획의 시작이나 끝 부분에 있는 작은 돌출선 */
+/* sans-serif: without serif */
+/* sans: 프랑스로 없다라는 뜻 */
+/* monospace: 고정폭 글꼴 */
+.oblique {/* normal, italic, oblique */
+    font-style: oblique;}
+.weight {font-weight: bold;/* b태그 strong태그에 넣지 말 것. 숫자로도 입력 가능.
+    이렇게 스타일로 두께 지정 권장 */}
+
+.loose {
+    letter-spacing: 15px;
+    /* 자간 조절 */
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: right;
+}
+p.left {
+    text-align: left;
+}
+p.justify {
+    text-align: justify;
+}
+/* a {text-align: center;} */
+/* inline에 center줘도 안먹힘 */
+/* box에 속하게 만들어서 box에 줘야함 */
+p.center {text-align: center;}
+
+/* 2번째 방법, div박스 클래스에 옮겨서*/
+div.center-image {text-align: center;}

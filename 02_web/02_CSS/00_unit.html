@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+
+      h1 {
+          font-size: 50%; /* 폰트 100% = 기본값 */
+          font-size: 16px; 
+          /* 16px은 기본값, 50%&16px 둘다 들어가면 아래 명령 적용 */
+      }
+
+      p {
+          font-size: 1rem;
+          /* root em 브라우저 기본 폰트 사이즈 == 1rem %를 의미*/
+          color: #f0f;
+          /* R  G  B */
+          /* range(256): 0~255로 수치가 표현됨 */
+          /* 0f 0f 16진수로 */
+          /* ex: ff(255) ff(255) ff(255) => 흰색 */
+          /* 흰색은 fff라고 생략해도됨 */
+          color: rgb(255, 255, 255);
+          color: rgba(247, 3, 3, 0.315);
+          /* rgb에서 건드려도 rgba로 바뀌면서 투명도 조절 가능 */
+          font-style: italic;
+      }
+
+      div {
+          font-size: 100%; /* 16px */
+      }
+
+      div li {
+          font-size: 2em; /* 상속받은 100%가 1em 값이 1em */
+          color: red;
+      }
+
+      div > div {
+          font-size: 0.8em;
+      }
+      .text {
+        font-size: 15em;
+        color: red;
+      }
+    </style>
+</head>
+<body>
+    <div>
+      <!-- 16px -->
+      aaa
+      <div>
+        <!-- 16px * 0.8 -->
+        bbb
+        <div>
+          <!-- 16px * 0.8 * 0.8 -->
+          ccc
+          <div>
+            ddd
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text">
+      <!-- h1 자체는 원래 2em 크기를 가진다 -->
+      <!-- 결과적으로 h1의 최종 크기는 class 크기를 적용하여 16px -->
+      <h1>This is my site</h1>
+    </div>
+    <div>
+        <h2>My cafe</h2>
+        <p>This is great cafe</p>
+        <ul>
+          <li>파스타</li>
+          <li>샐러드</li>
+        </ul>
+    </div>
+</body>
+</html>

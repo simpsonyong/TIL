@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="06_display.css">
+</head>
+<body>
+    <div class="aa">
+        <h2>Block level</h2>
+        <p>
+            width, height 미지정 => width: 100%; height: auto;
+        </p>
+    </div>
+    <div class="bb">
+        <h2>Block level</h2>
+        <a href="#">This is line</a>
+        <!-- a 하이퍼링크 가능 -->
+        <p>width 지정 => width: 300px; height: auto;</p>
+    </div>
+    <h1>My <span>great</span> great heading</h1>
+    <span class="cc">Inline</span>
+    <input type="text" name="" id="">
+    <input type="text">
+    <span class="dd">Inline</span> <span class="ee">Inline</span>
+    <!-- span input 같은 애들 space와 enter를 유의해서 사용할 것 -->
+    <!-- span 중간에 div를 입력해도 출력은 되나 span이 찢어지기 때문에
+    겉으로는 멀쩡해 보여도 절대로 그렇게 안에 div같은 것을 block 속성에 넣지 말 것 -->
+    <!-- 즉 PPT에서 블록에 넣고 글을 쓰는데 반대로 하는 격임. -->
+    <div class="xx">
+        <span class='big-lh'>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis quasi ad quod, quos earum saepe maiores expedita eos vero iure quisquam, voluptatibus alias voluptate nostrum quis nam voluptatem? Vel, sunt!
+        </span>
+    </div>
+    <hr>
+    <!-- inline block  -->
+    <p class="ib">p는 원래 블록</p>
+    <p class="ib">하지만 짜잔!</p>
+</body>
+</html>
